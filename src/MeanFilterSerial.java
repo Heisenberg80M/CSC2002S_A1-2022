@@ -25,6 +25,8 @@ public class MeanFilterSerial{
 
 
     public static void main(String args[]) throws IOException{
+
+        
         BufferedImage imageIN = null; // For storing INPUT image in RAM
 
         System.out.println(inputImg);
