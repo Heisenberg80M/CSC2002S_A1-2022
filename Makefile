@@ -1,4 +1,4 @@
-# A2_Concurrency makefile
+# A1_Parallel Programming makefile
 # Tafadzwa Nyazenga
 # 6 August 2022
 
@@ -16,7 +16,7 @@ DOCDIR=doc
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
 
-CLASSES= Score.class WordDictionary.class WordRecord.class WordPanel.class WordApp.class
+CLASSES= MeanFilterSerial.class
 CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 
 default: $(CLASS_FILES)
@@ -29,8 +29,8 @@ clean:
 	$(RM) $(BINDIR)/*.class
 
 
-run: $(CLASS_FILES)
-		$(JAVA) -cp $(BINDIR) WordApp $(total_words) $(words_on_screen) $(dict_file)
+runMeanS: $(CLASS_FILES)
+		$(JAVA) -cp $(BINDIR) MeanFilterSerial $(inImage) $(outImage) $(wSize)
 
 
 clean-doc:
