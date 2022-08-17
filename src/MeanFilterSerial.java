@@ -46,6 +46,7 @@ public class MeanFilterSerial{
 
         String input;
         String arr[] = new String[3];
+        float totalTime = 0;
 
         //code to get input from user
         Scanner into = new Scanner(System.in);
@@ -55,15 +56,17 @@ public class MeanFilterSerial{
 
         //check if input parameters have been entered correctly
         try{
-            if(arr[0].equals(null)||arr[1].equals(null)||arr[2].equals(null)){}
+            if(arr[0].equals(null)||arr[1].equals(null)||arr[2].equals(null)){
+                System.out.println("Error");
+            }
         }
         catch(Exception e){
-            System.out.println("Input parameters entered Incorrectly. Please remember to separate the parameters with spaces!");
-            System.exit(0);;
+            System.out.println("Input parameters entered incorrectly. Please remember to separate the parameters with spaces!");
+            System.exit(0);
         }
 
         int temp = Integer.parseInt(arr[2]);
-        if(temp < 3 || (temp%2==0)){
+        if((temp < 3) || (temp%2==0)){
             System.out.println("Inaccurate input for parameter 3. Please make sure value is greater or equal to 3 and an odd number.");
             System.exit(0);
         }
@@ -80,7 +83,7 @@ public class MeanFilterSerial{
 
         }
         catch(Exception e){
-            System.out.println("File not found!");
+            System.out.println("Input image not found!");
         }
 
         int count1= 0;
@@ -105,10 +108,15 @@ public class MeanFilterSerial{
                               }
                           }
                       }
+                      tick();
                       dst[x] = (int)MeanFilterSerial.MeanCalc(block, window);
+                      totalTime += tock();
                   }
               }
           }
+
+        //displays the time the main work took to run
+        System.out.println("System took: " + totalTime + " milliseconds to run.");
 
         //writing the processed data into a new buffered image
         BufferedImage outputImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);

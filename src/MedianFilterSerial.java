@@ -64,7 +64,7 @@ public class MedianFilterSerial{
             if(arr[0].equals(null)||arr[1].equals(null)||arr[2].equals(null)){}
         }
         catch(Exception e){
-            System.out.println("Input parameters entered Incorrectly. Please remember to separate the parameters with spaces!");
+            System.out.println("Input parameters entered incorrectly. Please remember to separate the parameters with spaces!");
             System.exit(0);;
         }
 
@@ -86,7 +86,7 @@ public class MedianFilterSerial{
 
         }
         catch(Exception e){
-            System.out.println("File not found!");
+            System.out.println("Input image not found!");
         }
 
         int count1= 0;
