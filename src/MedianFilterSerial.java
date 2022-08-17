@@ -52,6 +52,7 @@ public class MedianFilterSerial{
 
         String input;
         String arr[] = new String[3];
+        float totalTime = 0;
 
         //code to get input from user
         Scanner into = new Scanner(System.in);
@@ -111,10 +112,15 @@ public class MedianFilterSerial{
                               }
                           }
                       }
+                      tick();
                       dst[x] = (int)MedianFilterSerial.MedianCalc(block, window);
+                      totalTime += tock();
                   }
               }
           }
+
+        //displays the time the main work took to run
+        System.out.println("System took: " + totalTime + " milliseconds to run.");
 
         //writing the processed data into a new buffered image
         BufferedImage outputImg = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
