@@ -16,7 +16,7 @@ DOCDIR=doc
 $(BINDIR)/%.class:$(SRCDIR)/%.java
 	$(JAVAC) -d $(BINDIR)/ -cp $(BINDIR) $<
 
-CLASSES= MeanFilterSerial.class
+CLASSES= MeanFilterSerial.class MedianFilterSerial.class
 CLASS_FILES=$(CLASSES:%.class=$(BINDIR)/%.class)
 
 default: $(CLASS_FILES)
@@ -30,7 +30,10 @@ clean:
 
 
 runMeanS: $(CLASS_FILES)
-		$(JAVA) -cp $(BINDIR) MeanFilterSerial $(inImage) $(outImage) $(wSize)
+		$(JAVA) -cp $(BINDIR) MeanFilterSerial
+
+runMedianS: $(CLASS_FILES)
+		$(JAVA) -cp $(BINDIR) MedianFilterSerial
 
 
 clean-doc:
